@@ -3,15 +3,14 @@ import React, { useEffect, useState } from 'react'
 import Header from '../components/Header/Header'
 import Threads from '../components/Threads/Threads'
 import Loader from '../components/Loader/Loader'
+import Comment from '../components/Comments/Comment'
+import api from '../services/services'
 
 import { FiArrowLeft } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
-
-import { CommentsContent, Back, Post, Comment, FormButtons, FormContent, FormInputs } from '../styles/Comments/comments'
-
-import api from '../services/services'
-
 import { Formik, Form } from 'formik'
+
+import { CommentsContent, Back, Post, FormButtons, FormContent, FormInputs } from '../styles/Comments/comments'
 
 export default function Comments({ match }) {
   const id = match.params.id
@@ -70,16 +69,8 @@ export default function Comments({ match }) {
         </Post>
 
         {comments ? (
-          comments.map((comment) => {
-            return (
-              <Comment key={comment.author_id}>
-                <div>
-                  <h1 className='post-title space'>Comment</h1>
-                  <p className=' space'>id: {comment.author_id}</p>
-                  <p className='space'>message: {comment.comment.message}</p>
-                </div>
-              </Comment>
-            )
+          comments.map((comment, index) => {
+            return <Comment message={comment.comment.message} id={comment.author_id} key={index} />
           })
         ) : (
           <></>

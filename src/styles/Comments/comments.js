@@ -5,6 +5,11 @@ export const CommentsContent = styled.div`
   left:31%;
   top:20%;
   width:38%;
+
+  @media(max-width:425px){
+    left:0;
+    width:100%;
+  }
 `
 
 export const Back = styled.div`
@@ -36,22 +41,6 @@ export const Post = styled.div`
     
   }
 
-`
-
-export const Comment = styled.div`
-  height:100px;
-  border-bottom:1px solid #cbd5e0;
-  padding:10px 20px;
-
-  .space{
-    margin-bottom:10px;
-  }
-  .post-title{
-    font-size:20px;
-    font-weight:300;
-    letter-spacing:0.5;
-    
-  }
 `
 
 export const FormContent = styled.div`
